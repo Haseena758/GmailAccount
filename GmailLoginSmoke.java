@@ -11,6 +11,8 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.google.common.io.Resources;
@@ -20,10 +22,10 @@ import automation.Deletingunreadmails;
 import automation.GmailLogin;
 import automation.GmailLogout;
 import automation.SearchingforMail;
-
+@Listeners(automation.listenersinTesng.class)
 public class GmailLoginSmoke {
 	private WebDriver w ;
-
+	
 	@BeforeMethod
 	public void Browserlaunch(ITestContext testContext) throws URISyntaxException {
 
@@ -58,10 +60,11 @@ public class GmailLoginSmoke {
 		ComposeMail C = new ComposeMail(this.w);
 		C.Compose("pathanhaseena758@gmail.com");
 		C.takingScreenshot();
-		SearchingforMail S = new SearchingforMail(this.w);
-		S.search();
-		Deletingunreadmails D=new Deletingunreadmails(this.w);
-		D.delete();
+        //SearchingforMail S=new SearchingforMail(w);
+	
+		//S.search();
+		//Deletingunreadmails D=new Deletingunreadmails(this.w);
+		//D.delete();
 		GmailLogout L = new GmailLogout(this.w);
 		L.Logout();
 	}
